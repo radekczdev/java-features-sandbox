@@ -20,6 +20,7 @@ public class MainClass {
       SecurityUtil.setContextAuthentication(SecurityUtil.user()); // this auth context will be cleared in new thread, so checking Authentication will not work
       Runnable runnable =
             () -> {
+              SecurityUtil.setContextAuthentication(SecurityUtil.user());
 //              System.out.println(Thread.currentThread());  // setting this context here will work
               settingContext.calledMethodInNewThread();
             };
