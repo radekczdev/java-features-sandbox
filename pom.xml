@@ -12,6 +12,7 @@
     <module>encryption</module>
     <module>jpa-hibernate</module>
       <module>sealed-interfaces</module>
+      <module>jdk-23</module>
   </modules>
   <dependencyManagement>
     <dependencies>
