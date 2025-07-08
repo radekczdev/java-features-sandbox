@@ -29,7 +29,10 @@ public class ProfilingApplication {
     for (int counter = 0; counter < count.length; counter++) {
       count[counter] = update(collection, System.nanoTime(), interval);
       Path p = Paths.get("./a/b");
-      Files.createDirectories(p);
+      if(!Files.exists(p)) { // added to compare before/after - time was significantly reduced because invisible,
+        // native calls were reduced (in general, system errors/antivirus checks were performed but we couldn't see or catch it in java code)
+        Files.createDirectories(p);
+      }
     }
     long spent = System.nanoTime() - start;
     //noinspection OptionalGetWithoutIsPresent
