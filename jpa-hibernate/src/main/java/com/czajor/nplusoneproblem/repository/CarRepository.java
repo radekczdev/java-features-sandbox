@@ -14,12 +14,13 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
   // Solution 1: EntityGraph
   @EntityGraph(attributePaths = "owner")
-  @Query("select c from Car c")
-  List<Car> findAllWithOwnerEntityGraph();
+  @Query("select c from Car c") // this method COULD (and in production SHOULD if we want default method Override or generated)
+                                // be skipped IF the default method findAll() is used
+  List<Car> findAllWithOwnersEntityGraph();
 
   // Solution 2: JPQL fetch join
   @Query("select c from Car c join fetch c.owner")
-  List<Car> findAllWithOwnerFetchJoin();
+  List<Car> findAllWithOwnersFetchJoin();
 
 }
 

@@ -53,14 +53,14 @@ class CarServiceTest {
   @Test
   void testGetAllCarsWithOwnerEntityGraph() {
     entityManager.clear();
-    final List<Car> all = carRepository.findAllWithOwnerEntityGraph();
+    final List<Car> all = carRepository.findAllWithOwnersEntityGraph();
     all.forEach(car -> car.getOwner().getName());
   }
 
   @Test
   void testGetAllCarsWithOwnerFetchJoin() {
     entityManager.clear();
-    final List<Car> all = carRepository.findAllWithOwnerFetchJoin();
+    final List<Car> all = carRepository.findAllWithOwnersFetchJoin();
     all.forEach(car -> car.getOwner().getName());
   }
 
